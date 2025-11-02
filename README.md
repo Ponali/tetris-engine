@@ -44,10 +44,31 @@ Here are all the ports of this engine that are planned and finished:
 ## Default terminal frontend
 This frontend comes with every port of the engine, and contains a few quirks depending on the terminal emulator or the operating system you're using.
 
+### Controls
+The controls are based on Tetr.IO, except for keys like Ctrl, Shift, and Alt, and the new "move to wall" keystrokes (see "Limitations").
+
+- Left arrow key / `4`: Move left
+- Right arrow key / `6`: Move right
+- `s`: Move to leftest possible position
+- `d`: Move to rightest possible position
+- Down arrow key / `2`: Move down
+- Up arrow key / `x` / `1` / `5` / `9`: Rotate clockwise
+- `z` / `3` / `7`: Rotate counter-clockwise
+- `a`: Rotate 180°
+- `,` / `.`: Sonic drop
+- Space / `8`: Hard drop
+- `c` / `0`: Hold current piece
+
+The "Move to leftest/rightest possible position" mean that the piece will move to the left or right wall, unless if the stack is in the way.
+
 ### Limitations
 As of right now, this frontend is only tested on a Linux system running Konsole, so it might break or work differently on Windows, macOS, or other terminal emulators. If so, please report an issue on this repo.
 
 Unfortunately, the terminal is in charge of the DAS, and there is no way to disable this, even using raw mode. To change the DAS speed for this frontend, please check the settings for your terminal emulator or your operating system for anything related to DAS.
+
+This also means that ARR won't be implemented (it could, but it's not a good idea). Thus, if moving to the leftest or rightest possible position has to be used, you will have to use seperate keystrokes (see "Controls").
+
+The terminal is also in charge of putting the user input into "standard in", and unfortunately, it doesn't show anything when only pressing Ctrl, Shift, or Alt, which makes these keys impossible to capture.
 
 Rewards (e.g. tetris, t-spin, and all clear) show up below the playfield with twice the size as how characters usually show up (done through [these VT100 escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code#nF_Escape_sequences)). If your terminal emulator doesn't support double size text, it will show up twice on the middle left.
 
