@@ -1,4 +1,4 @@
-engineVersion="1.0.0"
+engineVersion="1.0.0a"
 
 import random
 
@@ -175,11 +175,11 @@ class Grid2D:
     if x<0 or y<0 or x>=s.cols or y>=s.rows:
       if replace!=None:
         return replace
-      raise IndexError(f"2D list index out of range ({x},{y})")
+      raise IndexError("2D list index out of range (%d,%d)"%(x,y))
     return s.arr[x+y*s.cols]
   def set(s,x,y,v):
     if x<0 or y<0 or x>=s.cols or y>=s.rows:
-      raise IndexError(f"2D list index out of range ({x},{y})")
+      raise IndexError("2D list index out of range (%d,%d)"%(x,y))
     s.arr[x+y*s.cols]=v
   def copy(s):
     n=Grid2D(s.cols,s.rows)
@@ -294,11 +294,10 @@ class TetrisGrid:
         s.pieceTSpin = True
   def isMiniTSpin(s):
     if s.tt!=2: return False
-    match s.tr:
-      case 0: return not (s.grid.get(s.tx+0,s.ty+0)>0 and s.grid.get(s.tx+2,s.ty+0)>0)
-      case 1: return not (s.grid.get(s.tx+2,s.ty+0)>0 and s.grid.get(s.tx+2,s.ty+2)>0)
-      case 2: return not (s.grid.get(s.tx+2,s.ty+2)>0 and s.grid.get(s.tx+0,s.ty+2)>0)
-      case 3: return not (s.grid.get(s.tx+0,s.ty+2)>0 and s.grid.get(s.tx+0,s.ty+0)>0)
+    if s.tr==0: return not (s.grid.get(s.tx+0,s.ty+0)>0 and s.grid.get(s.tx+2,s.ty+0)>0)
+    if s.tr==1: return not (s.grid.get(s.tx+2,s.ty+0)>0 and s.grid.get(s.tx+2,s.ty+2)>0)
+    if s.tr==2: return not (s.grid.get(s.tx+2,s.ty+2)>0 and s.grid.get(s.tx+0,s.ty+2)>0)
+    if s.tr==3: return not (s.grid.get(s.tx+0,s.ty+2)>0 and s.grid.get(s.tx+0,s.ty+0)>0)
   def holdCurrentPiece(s):
     if not s.canHoldPiece:
       return
@@ -386,30 +385,26 @@ class TetrisGrid:
       if s.backToBack>2 and linesFound>=4:
         s.score+=3200*s.level
       else:
-        match linesFound:
-          case 1: s.score+=800*s.level*b2bMultiplier
-          case 2: s.score+=1200*s.level*b2bMultiplier
-          case 3: s.score+=1800*s.level*b2bMultiplier
-          case 4: s.score+=2000*s.level*b2bMultiplier
+        if linesFound==1: s.score+=800*s.level*b2bMultiplier
+        if linesFound==2: s.score+=1200*s.level*b2bMultiplier
+        if linesFound==3: s.score+=1800*s.level*b2bMultiplier
+        if linesFound==4: s.score+=2000*s.level*b2bMultiplier
     else:
       if s.pieceTSpin:
         if isMiniTSpin:
-          match linesFound:
-            case 0: s.score+=100*s.level
-            case 1: s.score+=200*s.level*b2bMultiplier
-            case 2: s.score+=400*s.level*b2bMultiplier
+          if linesFound==0: s.score+=100*s.level
+          if linesFound==1: s.score+=200*s.level*b2bMultiplier
+          if linesFound==2: s.score+=400*s.level*b2bMultiplier
         else:
-          match linesFound:
-            case 0: s.score+=400*s.level
-            case 1: s.score+=800*s.level*b2bMultiplier
-            case 2: s.score+=1200*s.level*b2bMultiplier
-            case 3: s.score+=1600*s.level*b2bMultiplier
+          if linesFound==0: s.score+=400*s.level
+          if linesFound==1: s.score+=800*s.level*b2bMultiplier
+          if linesFound==2: s.score+=1200*s.level*b2bMultiplier
+          if linesFound==3: s.score+=1600*s.level*b2bMultiplier
       else:
-        match linesFound:
-          case 1: s.score+=100*s.level*b2bMultiplier
-          case 2: s.score+=300*s.level*b2bMultiplier
-          case 3: s.score+=500*s.level*b2bMultiplier
-          case 4: s.score+=800*s.level*b2bMultiplier
+        if linesFound==1: s.score+=100*s.level*b2bMultiplier
+        if linesFound==2: s.score+=300*s.level*b2bMultiplier
+        if linesFound==3: s.score+=500*s.level*b2bMultiplier
+        if linesFound==4: s.score+=800*s.level*b2bMultiplier
     # update level
     while s.levelLines>10:
       s.level+=1
