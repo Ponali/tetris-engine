@@ -95,3 +95,10 @@ You will get a 4D array (7x4x4x4) for every 4x4 plane for every rotation of ever
 `tetriminoData[grid.tt][grid.tr][grid.ty][grid.tx]`
 
 Please note that this uses vanilla Python arrays instead of [NumPy](https://numpy.org/) arrays.
+
+# Pausing
+You can temporarily pause the game running in a tetris grid by calling `grid.pause()`.
+
+Calling this function without any arguments will toggle whether the game is paused. You can check if the game is paused by getting `grid.paused` (note the "d" at the end!)
+
+If you want to make sure whether you are pausing or you are un-pausing, you can call `grid.pause()` with a boolean as the first argument. If said boolean is True, pause the game. If False, continue.
