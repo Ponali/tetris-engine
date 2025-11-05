@@ -41,6 +41,12 @@ Here are all the ports of this engine that are planned and finished:
 - [ ] Rust
 - [ ] Pure Bash
 
+Currently, versioning works through `MAJOR.MINOR.PATCH`, like semantic versioning. However, if a change that only applies to a specific port (or deemed specific to its language) is required (e.g. part of the code was ported wrong and caused a bug, or certain features aren't available in platforms running the port) its version will have a letter that goes up.
+
+For example, if a Lua port of `1.1.0` gets made, and gets ported badly, the bug will be fixed in version `1.1.0a` (and then `1.1.0b` if it happens again). If it gets ported to a newer version (e.g. `1.2.0`), it will be replaced by `1.2.0`.
+
+The main Python version can have versions with a letter at the end when some keywords are replaced with more compatible keywords for platforms with older versions of Python.
+
 ## Default terminal frontend
 This frontend comes with every port of the engine, and contains a few quirks depending on the terminal emulator or the operating system you're using.
 
