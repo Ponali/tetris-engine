@@ -45,7 +45,7 @@ Here are all the ports of this engine that are planned and finished:
 This frontend comes with every port of the engine, and contains a few quirks depending on the terminal emulator or the operating system you're using.
 
 ### Controls
-The controls are based on Tetr.IO, except for keys like Ctrl, Shift, and Alt, and the new "move to wall" keystrokes (see "Limitations").
+The controls in gameplay are based on Tetr.IO, except for keys like Ctrl, Shift, and Alt, and the new "move to wall" keystrokes (see "Limitations").
 
 - Left arrow key / `4`: Move left
 - Right arrow key / `6`: Move right
@@ -60,6 +60,8 @@ The controls are based on Tetr.IO, except for keys like Ctrl, Shift, and Alt, an
 - `c` / `0`: Hold current piece
 
 The "Move to leftest/rightest possible position" mean that the piece will move to the left or right wall, unless if the stack is in the way.
+
+Press the `p` key to pause, the `r` key to reset, and `q` or Ctrl+C to exit.
 
 ### Limitations
 As of right now, this frontend is only tested on a Linux system running Konsole, so it might break or work differently on Windows, macOS, or other terminal emulators. If so, please report an issue on this repo.
