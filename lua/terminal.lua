@@ -1,4 +1,4 @@
-frontendVersion="1.0.0"
+frontendVersion="1.0.0a"
 
 local clockStart = os.clock()
 function getTimestamp()
@@ -428,7 +428,7 @@ local status,err = pcall(function()
     if char=="p" then
       writeToStdout("\x1b["..ttySize.lines..";1H\x1b[0;7m\x1b[2K")
       local pauseText="game paused"
-      writeToStdout(pauseText..string.rep(" ",ttySize.columns,#pauseText))
+      writeToStdout(pauseText..string.rep(" ",ttySize.columns-#pauseText))
       io.flush()
       while readChar()~="p" do end
       writeToStdout("\x1b[0m")
