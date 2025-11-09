@@ -1,4 +1,4 @@
-engineVersion="1.0.0a"
+engineVersion="1.0.0b"
 
 import random
 
@@ -193,7 +193,7 @@ class TetrisBag:
     s.addRandomPieces()
   def addRandomPieces(s):
     pieceList = [i+random.randint(0,1)*7 for i in range(7)]
-    random.shuffle(pieceList)
+    pieceList = sorted(pieceList, key=lambda x: random.random())
     s.outgoing.extend(pieceList)
   def pop(s):
     piece = s.outgoing.pop(0)
@@ -487,7 +487,7 @@ class TetrisGrid:
     if vx<0 or vy<0 or vx>=4 or vy>=4:
       return False
     return d[vy][vx]==1
-  def pause(pauseValue=None):
+  def pause(s,pauseValue=None):
     if pauseValue==None:
       pauseValue=not s.paused
     if s.paused!=pauseValue:

@@ -28,7 +28,7 @@ for i,v in enumerate(sys.argv):
         rows=int(value)
       case "ir" | "irows" | "bz" | "bufferzone":
         invisibleRows=int(value)
-  else: # "garry" and "russian"
+  else:
     match v:
       case "sr" | "rotate" | "spawnrotated":
         spawnPiecesRotated=True

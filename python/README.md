@@ -50,6 +50,17 @@ from engine import TetrisGrid, ...
 grid = TetrisGrid(columns,rows+4,False,eventHandler)
 ```
 
+After creating the grid, you will need to spawn a tetrimino afterwards. Calling `grid.update(...)` before doing so will result in undefined behaviour.
+To spawn a tetrimino, call `grid.spawnTetrimino()`.
+
+# Updating the Tetris grid with user input
+
+Make sure to constantly call `grid.update(...)` in order to let the Tetris grid handle gravity and user input.
+
+`grid.update()` take arguments for user input in this order: Left, Right, Down (or Soft drop), Rotate clockwise, Rotate counter-clockwise, Rotate 180°, Sonic drop, Hard drop, and [hold](https://tetris.wiki/Hold_piece).
+
+To allow ARR ([Auto Repeat Rate](https://tetris.wiki/DAS)) functionality, arguments for Left, Right and Down can be given either as booleans or as numbers (where `False` is the same as 0, and `True` is the same as 1). Arguments for other buttons have to be booleans.
+
 # Handling a 2D grid of cells
 
 To get the current grid of cells that can be displayed to a screen by the frontend, use `grid.getScreenWithCurrentPiece()`.
@@ -102,3 +113,5 @@ You can temporarily pause the game running in a tetris grid by calling `grid.pau
 Calling this function without any arguments will toggle whether the game is paused. You can check if the game is paused by getting `grid.paused` (note the "d" at the end!)
 
 If you want to make sure whether you are pausing or you are un-pausing, you can call `grid.pause()` with a boolean as the first argument. If said boolean is True, pause the game. If False, continue.
+
+When paused, all calls to `grid.update()` will be ignored.

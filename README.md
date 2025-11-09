@@ -35,9 +35,10 @@ Here are all the ports of this engine that are planned and finished:
 - [X] Python
   - [ ] [TKinter](https://docs.python.org/3/library/tkinter.html) frontend
   - [ ] [Casioplot](https://therainbowphoenix.github.io/PythonExtra/library/casioplot.html) frontend for [Casio Graph Math+](https://www.casio-education.fr/produits/graph-math-plus/)
-- [ ] Lua
+- [X] Lua
   - [ ] [OpenComputers](https://ocdoc.cil.li/) TUI frontend ([Halyde](https://github.com/Team-Cerulean-Blue/Halyde), OpenOS)
   - [ ] [OpenComputers](https://ocdoc.cil.li/) GUI frontend ([MineOS](https://github.com/IgorTimofeev/MineOS))
+  - [ ] Love2D frontend
 - [ ] Rust
 - [ ] Pure Bash
 
