@@ -1,4 +1,4 @@
-frontendVersion="1.0.0"
+frontendVersion="1.1.0"
 
 import random
 import time
@@ -87,7 +87,8 @@ def eventHandler(_,eventType,data):
     rewardTimestamp=getTimestamp()
     rewardClear=True
 
-grid = TetrisGrid(columns,rows+invisibleRows,spawnPiecesRotated,eventHandler)
+grid = TetrisGrid(columns,rows+invisibleRows,invisibleRows,eventHandler)
+grid.spawnPiecesRotated = spawnPiecesRotated
 
 stdoutFileno=sys.stdout.fileno()
 def writeToStdout(string):

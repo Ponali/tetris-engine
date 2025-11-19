@@ -1,4 +1,4 @@
-engineVersion="1.0.0b"
+engineVersion="1.1.0"
 
 import random
 
@@ -208,7 +208,7 @@ class TetrisBag:
 # TODO: make gravity speed customizable
 # TODO: pass invisible row count, and spawn piece Y based on that instead of hardcoded 4
 class TetrisGrid:
-  def __init__(s,cols,rows,spawnPiecesRotated,eventHandler):
+  def __init__(s,cols,rows,spawnHeight,eventHandler):
     s.grid=Grid2D(cols,rows)
     s.bag=TetrisBag()
     s.gravityUpdate = getTimestamp()
@@ -218,7 +218,8 @@ class TetrisGrid:
     s.pieceTSpin = False
     s.cols=cols
     s.rows=rows
-    s.spawnPiecesRotated=spawnPiecesRotated
+    s.spawnPiecesRotated=False
+    s.spawnHeight=spawnHeight
     s.eventHandler=eventHandler
     s.linesCleared = 0
     s.levelLines = 0
@@ -255,7 +256,7 @@ class TetrisGrid:
   def spawnSpecificTetrimino(s,tt):
     # s.tx=3
     s.tx=(s.cols-4)//2
-    s.ty=4
+    s.ty=s.spawnHeight
     s.tt=tt
     s.tr=0
     if s.tt>=7:
