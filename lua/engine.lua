@@ -253,10 +253,10 @@ function TetrisBag()
   return s
 end
 
-function TetrisGrid(cols,rows,spawnPiecesRotated,eventHandler)
+function TetrisGrid(cols,rows,spawnHeight,eventHandler)
   checkArg(1,cols,"number")
   checkArg(2,rows,"number")
-  checkArg(3,spawnPiecesRotated,"boolean")
+  checkArg(3,spawnHeight,"number")
   checkArg(4,eventHandler,"function")
   local s={}
   function s.getGravitySpeed(s)
@@ -299,7 +299,7 @@ function TetrisGrid(cols,rows,spawnPiecesRotated,eventHandler)
     checkArg(1,s,"table")
     checkArg(2,tt,"number")
     s.tx=(s.cols-4)//2
-    s.ty=4
+    s.ty=s.spawnHeight
     s.tt=tt
     s.tr=0
     if s.tt>=7 then
@@ -696,7 +696,8 @@ function TetrisGrid(cols,rows,spawnPiecesRotated,eventHandler)
   s.pieceTSpin = false
   s.cols=cols
   s.rows=rows
-  s.spawnPiecesRotated=spawnPiecesRotated
+  s.spawnPiecesRotated=false
+  s.spawnHeight=spawnHeight
   s.eventHandler=eventHandler
   s.linesCleared = 0
   s.levelLines = 0

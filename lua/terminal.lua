@@ -1,4 +1,4 @@
-frontendVersion="1.0.0a"
+frontendVersion="1.1.0"
 
 local clockStart = os.clock()
 function getTimestamp()
@@ -350,7 +350,8 @@ local function eventHandler(_,eventType,data)
   end
 end
 
-grid = TetrisGrid(columns,rows+invisibleRows,spawnPiecesRotated,eventHandler)
+grid = TetrisGrid(columns,rows+invisibleRows,invisibleRows,eventHandler)
+grid.spawnPiecesRotated = spawnPiecesRotated
 
 -- these 2 functions from "plterm": https://github.com/philanc/plterm/blob/master/plterm.lua#L386
 
