@@ -1,4 +1,4 @@
-frontendVersion="1.1.0"
+frontendVersion="1.1.1"
 
 import random
 import time
@@ -330,7 +330,7 @@ try:
       writeToStdout("\x1b[0m")
       showInfo()
     if char=="r":
-      grid=TetrisGrid(columns,rows+invisibleRows,spawnPiecesRotated,eventHandler)
+      grid=TetrisGrid(columns,rows+invisibleRows,invisibleRows,eventHandler)
       grid.spawnTetrimino()
       renderHoldPiece()
 finally:
