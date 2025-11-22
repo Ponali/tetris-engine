@@ -1,4 +1,4 @@
-frontendVersion="1.1.0"
+frontendVersion="1.1.1"
 
 local clockStart = os.clock()
 function getTimestamp()
@@ -436,7 +436,8 @@ local status,err = pcall(function()
       showInfo()
     end
     if char=="r" then
-      grid = TetrisGrid(columns,rows+invisibleRows,spawnPiecesRotated,eventHandler)
+      grid = TetrisGrid(columns,rows+invisibleRows,invisibleRows,eventHandler)
+      grid.spawnPiecesRotated = spawnPiecesRotated
       grid:spawnTetrimino()
       renderHoldPiece()
     end
