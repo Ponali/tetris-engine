@@ -39,7 +39,8 @@ Here are all the ports of this engine that are planned and finished:
   - [ ] [OpenComputers](https://ocdoc.cil.li/) TUI frontend ([Halyde](https://github.com/Team-Cerulean-Blue/Halyde), OpenOS)
   - [ ] [OpenComputers](https://ocdoc.cil.li/) GUI frontend ([MineOS](https://github.com/IgorTimofeev/MineOS))
   - [ ] Love2D frontend
-- [ ] Rust
+- [ ] Rust (might be scrapped)
+- [ ] C
 - [ ] Pure Bash
 
 Currently, versioning works through `MAJOR.MINOR.PATCH`, like semantic versioning. However, if a change that only applies to a specific port (or deemed specific to its language) is required (e.g. part of the code was ported wrong and caused a bug, or certain features aren't available in platforms running the port) its version will have a letter that goes up.

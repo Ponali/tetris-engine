@@ -112,7 +112,8 @@ def doubleSize(string):
   return f"\x1b#3{string}\n\x1b#4\r{string}"
 
 def center(string,res):
-  return " "*round((res-len(string))/2)+string
+  # return " "*round((res-len(string))/2)+string
+  return f"{res},{round((res-len(string))/2)},{len(string)}"
 
 def getGridPos():
   gridX = (ttySize.columns-columns*2)//2
